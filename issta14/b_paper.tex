@@ -1,0 +1,120 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\usepackage{amssymb,amsmath}
+\usepackage{proof,latexsym}
+\usepackage[usenames]{color}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{caption}
+\captionsetup{justification=centering}
+\usepackage{url}
+\usepackage[para]{footmisc}
+\usepackage{multirow}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{ifthen}
+\usepackage{cite,balance}
+
+\usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{rotating}
+%\usepackage[leftno,noindent]{lgrind}
+\usepackage{ifthen}
+\usepackage{fullpage}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newcommand{\rot}[1]{\begin{rotate}{90} #1 \end{rotate}}
+\newcommand{\rotb}[1]{\rot{\bf #1}}
+
+
+\newboolean{showcomments}
+\setboolean{showcomments}{true}
+\ifthenelse{\boolean{showcomments}}
+{ \newcommand{\mynote}[2]{
+    \fbox{\bfseries\sffamily\scriptsize#1}
+    {\small$\blacktriangleright$\textsf{\emph{#2}}$\blacktriangleleft$}}}
+{ \newcommand{\mynote}[2]{}}
+
+
+\def\cnf{\mathit{conf}}
+
+\newenvironment{packed_enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+\newenvironment{packed_itemize}{
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\def\concat{\mathit{+\!\!+}}
+
+
+\newcommand{\todosimple}[2]
+  {{\scriptsize \textbf{{#1} says: \color{red} {#2}}}}
+\newcommand{\ssmnote}[1]{\todosimple{SM}{#1}}
+\newcommand{\sdlnote}[1]{\todosimple{DL}{#1}}
+\newcommand{\lx}[1]{\todosimple{LX}{#1}}
+\newcommand{\tb}[1]{\todosimple{Bissyande}{#1}}
+
+
+\newcommand{\task}[1]{\mynote{**Task**}{#1}}
+
+
+\newcommand{\todo}[1]{\vspace{3mm}\begin{center}\fbox{
+        \begin{minipage}{.7\linewidth} \small\begin{center}\fbox{To Do:}
+        \end{center}#1\end{minipage}}\end{center}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\pdfpagewidth 8.5in
+\pdfpageheight 11.0in
+
+\title{\input{title}}
+
+\author{\IEEEauthorblockN{Mike Papadakis, Tegawend\'e F. Bissyand\'e and Yves Le Traon}
+    \IEEEauthorblockA{
+    SnT, University of Luxembourg, Luxembourg\\
+    michail.papadakis@uni.lu, tegawende.bissyande@uni.lu, yves.letraon@uni.lu\\
+    }
+}
+
+\maketitle
+\thispagestyle{plain}
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+
+\input{body}
+
+
+{
+%\balance
+%\scriptsize
+%\def\baselinestretch{0.95}
+\bibliographystyle{plain}
+%\def\IEEEbibitemsep{0.92pt plus .5pt}
+\bibliography{paper}
+}
+
+\end{document}

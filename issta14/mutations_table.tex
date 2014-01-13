@@ -1,0 +1,61 @@
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\hline
+& & & & & & &  & \\
+& & & & & & & & \\
+& & & & & & &  & \\
+ \multirow{6}{*}{}& \multirow{6}{*}{\rotb{Mutant}} &  \multirow{6}{*}{\rotb{Statement}} & \multirow{6}{*}{\rotb{Execution 1}} &  \multirow{6}{*}{\rotb{Execution 2}} & \multirow{6}{*}{\rotb{Execution 3}} & \multirow{6}{*}{\rotb{Execution 4}} & \multirow{6}{*}{\rotb{Execution 5}} & \multirow{6}{*}{\rotb{Execution 6}}\\ 
+& & & & & & & & \\
+& & & & & & & & \\
+& & & & & & &  & \\
+ \hline
+%\toprule
+& & & & & & &  & \\
+\multirow{3}{*}{$int\ mid(int\ x,\ int\ y,\ int\ z)\lbrace$} &\multirow{3}{*} {} & \multirow{3}{*}{} & \multirow{3}{*}{\rot{$3,3,5$}} & \multirow{3}{*}{\rot{$1,2,3$}} & \multirow{3}{*}{\rot{$3,2,1$}} & \multirow{3}{*}{\rot{$5,5,5$}} & \multirow{3}{*}{\rot{$5,3,4$}} & \multirow{3}{*}{\rot{$2,1,4$}} \\ %\midrule 
+& & & & & & &  & \\
+\hline
+~~$int\ m;$ & & 1 &\xmark&\xmark&\xmark&\xmark&\xmark& \xmark \\ \hline
+~~$m = z;$ & & 2 &\xmark&\xmark&\xmark&\xmark&\xmark& \xmark \\ \hline
+~~$if(y < z)$ 			& 	& 3 &\xmark&\xmark&\xmark&\xmark&\xmark& \xmark\\ \hline
+~~~~~$if(x < y)$ 		& 	& 4 &\xmark&\xmark&  	&  	&\xmark& \xmark \\ \hline
+~~~~~~~~$m=y;$ 			& 	& 5 &   &\xmark&   &   &   &   \\ \hline
+~~~~~$else\ if(x < z)$ 	& 	& 6 &\xmark&   &   &   &\xmark& \xmark \\ \hline
+~~~~~~~~$m=x;$ 			& 	& 7 &\xmark&   &   &   &   & \xmark\\ \hline
+~~$else$ 				& 	& 8 &   &   &\xmark&\xmark&   &   \\ \hline
+~~~~~$if(x > y)$ 		& 	& 9 &   &   &\xmark&\xmark&   &   \\ \hline
+~~~~~~~~$m=y;$ 			& 	& 10 &   &   &   &   &   &   \\ \hline
+~~~~~$else\ if(x > z)$ 	& 	& 11 &   &   &\xmark&\xmark&   &   \\ \hline
+~~~~~~~~$m=x;$ 			& 	& 12 &   &   &   &   &   &   \\ \hline
+~~$return\ m;$ 			& 	& 13 &\xmark&\xmark&\xmark&\xmark&\xmark& \xmark\\ \hline
+$\rbrace$ 				& 	& 	 &   &   &   &   &   &   \\ 
+\hline
+\hline
+\hline
+$int\ mid(int\ x,\ int\ y,\ int\ z)\lbrace$ & & & & & & & &\\ \hline
+~~$int\ m;$ & & 1 & & & & & &   \\ \hline
+~~$m = z;$ & & 2 & & & & & &   \\ \hline
+~~\multirow{3}{*}{$if(y < z)$} & $M1. <\ \rightarrow\ <=$	& \multirow{3}{*}{3}& & & &\cmark& &  \\ \cline{2-2}  \cline{4-9}
+ & $M2. <\ \rightarrow\ !=$	&  & & & & \cmark & & \\ \cline{2-2}  \cline{4-9}
+ & $M3. <\ \rightarrow\ false$	&  & \cmark & \cmark & & & \cmark & \\ \hline
+ ~~~~~\multirow{3}{*}{$if(x < y)$} & $M4. <\ \rightarrow\ <=$ & \multirow{3}{*}{4} &\cmark& &  & \cmark & &  \\ \cline{2-2}  \cline{4-9}
+ & $M5. <\ \rightarrow\ !=$	&  & \cmark& &  	&  \cmark & & \\ \cline{2-2}  \cline{4-9}
+ & $M6. <\ \rightarrow\ false$	&  & &\cmark&  	&  	& &   \\ \hline
+~~~~~~~~$m=y;$ 			& 	& 5 &   & &   &   &   &   \\ \hline
+~~~~~\multirow{3}{*}{$else\ if(x < z)$} 	& $M7. <\ \rightarrow\ <=$	& \multirow{3}{*}{6} & &   &   & \cmark  & & \\ \cline{2-2}  \cline{4-9}
+& $M8. <\ \rightarrow\ !=$	& &  &   &   & \cmark  & &  \\ \cline{2-2}  \cline{4-9}
+& $M9. <\ \rightarrow\ false$	&  &\cmark&  \cmark  &   &   & & \cmark \\ \hline
+~~~~~~~~$m=x;$ & 	& 7 &  &   &   &   &   &  \\ \hline
+~~$else$ 				& 	& 8 &   &   & & &   &   \\ \hline
+~~~~~\multirow{3}{*}{$if(x > y)$}& $M10. >\ \rightarrow\ >=$	& \multirow{3}{*}{9} & \cmark  &   & &\cmark&   &   \\ \cline{2-2}  \cline{4-9}
+& $M11. >\ \rightarrow\ !=$	&  & \cmark  &   & &\cmark&   &   \\ \cline{2-2}  \cline{4-9}
+& $M12. >\ \rightarrow\ false$	&  &   &   &\cmark& & \cmark  &   \\ \hline
+~~~~~~~~$m=y;$ 			& 	& 10 &   &   &   &   &   &   \\ \hline
+~~~~~\multirow{3}{*}{$else\ if(x > z)$} & $M13. >\ \rightarrow\ >=$ & \multirow{3}{*}{11} &   &   & &\cmark&   &   \\ \cline{2-2}  \cline{4-9}
+& $M14. >\ \rightarrow\ !=$ &  &  \cmark &   \cmark & &\cmark&   &  \cmark \\ \cline{2-2}  \cline{4-9}
+& $M15. >\ \rightarrow\ false$ &  &   &   &\cmark& &  \cmark &   \\ \hline
+~~~~~~~~$m=x;$ 			& 	& 12 &   &   &   &   &   &   \\ \hline
+~~$return\ m;$ 			& 	& 13 & & & & & &  \\ \hline
+$\rbrace$ 				& 	& 	 &   &   &   &   &   &   \\ 
+\hline
+%\bottomrule
+\end{tabular}
+%}
